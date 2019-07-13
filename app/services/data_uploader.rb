@@ -18,7 +18,9 @@ class DataUploader
       fields = raw.join(';').split(';')
 
       unless already_exists?(fields[1])
-        SpreeProduct.create(attributes(fields))
+        attrs = attributes(fields)
+
+        SpreeProduct.create(attrs) if attrs.present?
       end
     end
   end

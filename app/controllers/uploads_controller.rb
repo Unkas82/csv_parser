@@ -6,11 +6,17 @@
     # GET : products
     #
     def products
-# binding.pry
-      DataUploader.new(params[:file].read).upload_products
+      DataUploader.new(csv_string).upload_products
 
-      redirect_to spree.root_path
-      # render json: root_json, status: :ok
+      redirect_to spree.root_path, status: :no_content
+    end
+
+
+
+    private
+
+    def csv_string
+      params[:file].read
     end
 
   end
