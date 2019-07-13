@@ -39,5 +39,13 @@ module SparkTestTask
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Автозагрузка классов сервисов
+    config.autoload_paths += Dir["#{config.root}/app/"]
   end
 end
+
+
+
+
+

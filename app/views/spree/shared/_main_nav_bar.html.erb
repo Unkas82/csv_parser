@@ -1,6 +1,16 @@
 <nav class="col-md-12">
   <div id="main-nav-bar" class="navbar">
     <ul class="nav navbar-nav" data-hook>
+
+
+
+
+    <%= form_tag '/uploads/products', :multipart => true do %>
+       <label for="file">Upload text File</label> <%= file_field_tag "file" %>
+       <%= submit_tag %>
+    <% end %>
+
+
       <li id="home-link" data-hook><%= link_to Spree.t(:home), spree.root_path %></li>
     </ul>
     <ul class="nav navbar-nav navbar-right" data-hook>
