@@ -9,8 +9,8 @@ RSpec.describe UploadsController, type: :request do
     allow_any_instance_of(
       described_class
     ).to receive(
-      :csv_string
-    ).and_return(File.open(Rails.root.join('spec/support/files/sample.csv')).read)
+      :csv_path
+    ).and_return(File.open(Rails.root.join('spec/support/files/sample.csv')))
   end
 
   it 'responds with 200 status' do

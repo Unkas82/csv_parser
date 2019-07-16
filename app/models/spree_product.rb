@@ -5,5 +5,5 @@
 #
 class SpreeProduct < ApplicationRecord
 
-
+  validates :name, presence: true
 end

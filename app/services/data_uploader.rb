@@ -14,44 +14,26 @@ class DataUploader
   end
 
   def upload_products
-    get_pure_data.each do |raw|
-      fields = raw.join(';').split(';')
+    items = []
+    CSV.foreach(@file, headers: true) do |row|
 
-      unless already_exists?(fields[1])
-        attrs = attributes(fields)
-
-        SpreeProduct.create(attrs) if attrs.present?
+      hash = row.to_h
+      hash.reject! do |k,v|
+        !%w[name description availability_date slug].include? k
       end
+      hash["available_on"] = hash.delete "availability_date"
+
+      next if is_not_date?(hash["available_on"])
+      next if SpreeProduct.find_by(name: hash["name"]).present?
+      items << hash
     end
+
+    SpreeProduct.import(items) unless items.empty?
   end
 
   private
 
-  def get_pure_data
-    array = CSV.parse(@file)
-    array.delete_at(0)
-
-    remove_empty_rows(array)
-  end
-
-  def remove_empty_rows(array)
-    array.delete([[";;;;;;;"]])
-    array.delete([nil, nil, nil, nil, nil, nil, nil, nil, nil])
-    array
-  end
-
-  def attributes(fields)
-    {
-      name:         fields[1],
-      description:  fields[2],
-      available_on: fields[5].to_date,
-      slug:         fields[6]
-    }
-  rescue ArgumentError
-
-  end
-
-  def already_exists?(name)
-    SpreeProduct.find_by(name: name).present?
+  def is_not_date?(string)
+    (DateTime.parse(string) rescue nil).nil?
   end
 end

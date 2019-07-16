@@ -1,6 +1,6 @@
-,name,description,price,,availability_date,slug,stock_total,category
-,Ruby on Rails Bag,Animi officia,22,99,2017-12-04T14:55:22.913Z,ruby-on-rails-bag,15,Bags
-,Spree Bag,Rerum quaerat,25,99,2017-12-04T14:55:22.913Z,spree-bag,5,Bags
-,Spree Tote,Consequuntur quibusdam,14,99,2017-12-30T14:55:22.913Z,spree-tote,20,Bags
-,,,,,,,,
-,Spree shoes,dfsgdf d dfh fdg df g,66,99,ggg,Spree-shoes,10,shoes
+,name,description,price,availability_date,slug,stock_total,category
+,Ruby on Rails Bag,Animi officia,22,2017-12-04T14:55:22.913Z,ruby-on-rails-bag,15,Bags
+,Spree Bag,Rerum quaerat,25,2017-12-04T14:55:22.913Z,spree-bag,5,Bags
+,Spree Tote,Consequuntur quibusdam,14,2017-12-30T14:55:22.913Z,spree-tote,20,Bags
+,,,,,,,
+,Spree shoes,dfsgdf d dfh fdg df g,66,ggg,Spree-shoes,10,shoes
